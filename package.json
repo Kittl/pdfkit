@@ -9,7 +9,7 @@
     "document",
     "vector"
   ],
-  "version": "0.17.3",
+  "version": "0.17.4",
   "homepage": "http://pdfkit.org/",
   "author": {
     "name": "Devon Govett",
@@ -58,7 +58,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "rollup -c && npm run build-standalone",
-    "build-standalone": "browserify --standalone PDFDocument --ignore crypto js/pdfkit.js > js/pdfkit.standalone.js",
+    "build-standalone": "browserify js/pdfkit.js --standalone PDFDocument --ignore crypto --no-builtins -t brfs > js/pdfkit.standalone.js",
     "browserify-example": "browserify examples/browserify/browser.js > examples/browserify/bundle.js",
     "pdf-guide": "node docs/generate.js",
     "website": "node docs/generate_website.js",
@@ -70,9 +70,20 @@
     "test:visual": "jest visual/",
     "test:unit": "jest unit/"
   },
-  "main": "js/pdfkit.js",
-  "module": "js/pdfkit.es.js",
-  "types": "types/index.d.ts",
+  "types": "./types/pdfkit.d.ts",
+  "exports": {
+    ".": {
+      "require": "./js/pdfkit.js",
+      "import": "./js/pdfkit.es.js",
+      "types": "./types/pdfkit.d.ts"
+    },
+    "./writeSVG": {
+      "require": "./js/write_svg.js",
+      "import": "./js/write_svg.es.js",
+      "types": "./types/write_svg.d.ts"
+    },
+    "./js/virtual-fs.js": "./js/virtual-fs.js"
+  },
   "browserify": {
     "transform": [
       "brfs"

@@ -40,7 +40,7 @@ shader(fn: () => any): any;
       data: Uint8Array | Buffer;
       channels: number;
       alternate: string | string[];
-    };
+    }
 }
 
 declare namespace PDFKit.Mixins {
@@ -388,8 +388,8 @@ declare namespace PDFKit.Mixins {
     }
 
     interface PDFColor {
-        beingColorProfile(label: string): this;
-        endColorProfile(): this;
+        beginColorSpace(label: string): this;
+        endColorSpace(): this;
         fillColor(color: ColorValue, opacity?: number): this;
         strokeColor(color: ColorValue, opacity?: number): this;
         opacity(opacity: number): this;
@@ -877,26 +877,7 @@ declare namespace PDFKit {
         fontLayoutCache?: boolean;
     }
 
-    interface PDFDocument
-        extends
-            NodeJS.ReadableStream,
-            Mixins.PDFMetadata,
-            Mixins.PDFAnnotation,
-            Mixins.PDFColor,
-            Mixins.PDFImage,
-            Mixins.PDFTable,
-            Mixins.PDFText,
-            Mixins.PDFVector,
-            Mixins.PDFFont,
-            Mixins.PDFAcroForm,
-            Mixins.PDFMarking,
-            Mixins.PDFAttachment,
-            Mixins.PDFMetadata,
-            Mixins.PDFSubset,
-            Mixins.PDFOutline,
-            Mixins.PDFColorSpace,
-            Mixins.PDFOutputIntent
-    {
+    class PDFDocument {
         /**
          * PDF Version
          */
@@ -917,11 +898,12 @@ declare namespace PDFKit {
          * Represent the current page.
          */
         page: PDFPage;
+        outline: PDFKit.PDFOutline;
 
         x: number;
         y: number;
 
-        new(options?: PDFDocumentOptions): PDFDocument;
+        constructor(options?: PDFDocumentOptions);
 
         addPage(options?: PDFDocumentOptions): PDFDocument;
         continueOnNewPage(options?: PDFDocumentOptions): PDFDocument;
@@ -951,21 +933,39 @@ declare namespace PDFKit {
         addNamedEmbeddedFile(name: string, ref: PDFKitReference): void;
         addNamedJavaScript(name: string, js: string): void;
 
-        ref(data: {}): PDFKitReference;
-        addContent(data: any): PDFDocument;
+        ref(data: Record<string, unknown>): PDFKitReference;
+        addContent(data: unknown): PDFDocument;
         end(): void;
         toString(): string;
     }
+
+    interface PDFDocument
+        extends
+            NodeJS.ReadableStream,
+            Mixins.PDFMetadata,
+            Mixins.PDFAnnotation,
+            Mixins.PDFColor,
+            Mixins.PDFImage,
+            Mixins.PDFTable,
+            Mixins.PDFText,
+            Mixins.PDFVector,
+            Mixins.PDFFont,
+            Mixins.PDFAcroForm,
+            Mixins.PDFMarking,
+            Mixins.PDFAttachment,
+            Mixins.PDFSubset,
+            Mixins.PDFOutline,
+            Mixins.PDFColorSpace,
+            Mixins.PDFOutputIntent {}
 }
 
-declare module "pdfkit" {
-    var doc: PDFKit.PDFDocument;
-    export = doc;
-}
+declare const PDFDocument: typeof PDFKit.PDFDocument;
+
+export default PDFDocument;
 
 declare module "pdfkit/js/pdfkit.standalone" {
-    var doc: PDFKit.PDFDocument;
-    export = doc;
+    const PDFDocument: typeof PDFKit.PDFDocument;
+    export default PDFDocument;
 }
 
 declare module "pdfkit/js/gradient" {
