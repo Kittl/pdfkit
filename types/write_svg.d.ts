@@ -17,7 +17,7 @@ export default function SVGtoPDF(
   options?: SVGtoPDF.Options,
 ): void;
 
-declare namespace SVGtoPDF {
+export declare namespace SVGtoPDF {
   type RGBColor = [[number, number, number], number];
   type CMYKColor = [[number, number, number, number], number];
 
