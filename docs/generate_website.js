@@ -109,18 +109,15 @@ const generateImages = function (tree) {
 
       // write the PDF, convert to PNG and trim with ImageMagick (https://imagemagick.org)
       file.on('finish', () => {
-        exec(
-          `magick -density 150x150 ${f}.pdf -trim ${f}.png`,
-          (err, stdout, stderr) => {
-            if (stderr) {
-              console.error(stderr);
-            }
-            if (err) {
-              console.error(err);
-            }
-            fs.unlinkSync(`${f}.pdf`);
-          },
-        );
+        exec(`magick -density 150x150 ${f}.pdf -trim ${f}.png`, (err, stdout, stderr) => {
+          if (stderr) {
+            console.error(stderr);
+          }
+          if (err) {
+            console.error(err);
+          }
+          fs.unlinkSync(`${f}.pdf`);
+        });
       });
 
       doc.end();
@@ -133,10 +130,7 @@ for (let file of Array.from(files)) {
   let content = fs.readFileSync(file, 'utf8');
 
   // turn github highlighted code blocks into normal markdown code blocks
-  content = content.replace(
-    /^```javascript\n((:?.|\n)*?)\n```/gm,
-    (m, $1) => `    ${$1.split('\n').join('\n    ')}`,
-  );
+  content = content.replace(/^```javascript\n((:?.|\n)*?)\n```/gm, (m, $1) => `    ${$1.split('\n').join('\n    ')}`);
 
   const tree = markdown.parse(content);
   const headers = extractHeaders(tree);

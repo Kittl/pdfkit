@@ -12,10 +12,7 @@ describe('PDF/UA', () => {
     let doc = new PDFDocument(options);
     const data = logData(doc);
     doc.end();
-    expect(data).toContainChunk([
-      `11 0 obj`,
-      `<<\n/length 841\n/Type /Metadata\n/Subtype /XML\n/Length 843\n>>`,
-    ]);
+    expect(data).toContainChunk([`11 0 obj`, `<<\n/length 841\n/Type /Metadata\n/Subtype /XML\n/Length 843\n>>`]);
   });
 
   test('metadata constains pdfuaid part', () => {

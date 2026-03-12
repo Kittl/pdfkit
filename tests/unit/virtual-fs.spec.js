@@ -2,9 +2,7 @@ import fs from '../../lib/virtual-fs';
 
 function checkMissingFiles(files) {
   for (let file of files) {
-    expect(() => fs.readFileSync(`files/${file}`)).toThrow(
-      `File 'files/${file}' not found in virtual file system`,
-    );
+    expect(() => fs.readFileSync(`files/${file}`)).toThrow(`File 'files/${file}' not found in virtual file system`);
   }
 }
 
@@ -27,10 +25,7 @@ describe('virtual-fs', function () {
   test('writeFileSync', function () {
     checkMissingFiles(['encoded', 'raw', 'binary']);
 
-    fs.writeFileSync(
-      'files/encoded',
-      Buffer.from('File content').toString('base64'),
-    );
+    fs.writeFileSync('files/encoded', Buffer.from('File content').toString('base64'));
     fs.writeFileSync('files/raw', 'File content');
     fs.writeFileSync('files/binary', new Uint8Array([4, 3, 1, 2]));
 

@@ -7,18 +7,14 @@ import randomBytes from '../../lib/crypto/random';
 describe('crypto/md5', () => {
   test('md5Hash returns correct hash for string', () => {
     const result = md5Hash('hello');
-    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join(
-      '',
-    );
+    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join('');
     expect(hex).toBe('5d41402abc4b2a76b9719d911017c592');
   });
 
   test('md5Hash returns correct hash for Uint8Array', () => {
     const input = new Uint8Array([0x68, 0x65, 0x6c, 0x6c, 0x6f]); // "hello"
     const result = md5Hash(input);
-    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join(
-      '',
-    );
+    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join('');
     expect(hex).toBe('5d41402abc4b2a76b9719d911017c592');
   });
 
@@ -36,22 +32,14 @@ describe('crypto/sha256', () => {
   test('sha256Hash returns correct hash', () => {
     const input = new TextEncoder().encode('hello');
     const result = sha256Hash(input);
-    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join(
-      '',
-    );
-    expect(hex).toBe(
-      '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824',
-    );
+    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join('');
+    expect(hex).toBe('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824');
   });
 
   test('sha256Hash empty input', () => {
     const result = sha256Hash(new Uint8Array(0));
-    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join(
-      '',
-    );
-    expect(hex).toBe(
-      'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-    );
+    const hex = Array.from(result, (b) => b.toString(16).padStart(2, '0')).join('');
+    expect(hex).toBe('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
   });
 });
 
@@ -62,9 +50,7 @@ describe('crypto/rc4', () => {
     const plaintext = new TextEncoder().encode('Plaintext');
     const ciphertext = rc4(plaintext, key);
 
-    expect(ciphertext).toEqual(
-      new Uint8Array([0xbb, 0xf3, 0x16, 0xe8, 0xd9, 0x40, 0xaf, 0x0a, 0xd3]),
-    );
+    expect(ciphertext).toEqual(new Uint8Array([0xbb, 0xf3, 0x16, 0xe8, 0xd9, 0x40, 0xaf, 0x0a, 0xd3]));
   });
 
   test('rc4 is symmetric (encrypt then decrypt)', () => {
@@ -130,10 +116,7 @@ describe('crypto/aes', () => {
     const result = aesEcbEncrypt(plaintext, key);
     expect(result).toEqual(
       // AES-128-ECB with all zeros: known result
-      new Uint8Array([
-        0x66, 0xe9, 0x4b, 0xd4, 0xef, 0x8a, 0x2c, 0x3b, 0x88, 0x4c, 0xfa, 0x59,
-        0xca, 0x34, 0x2b, 0x2e,
-      ]),
+      new Uint8Array([0x66, 0xe9, 0x4b, 0xd4, 0xef, 0x8a, 0x2c, 0x3b, 0x88, 0x4c, 0xfa, 0x59, 0xca, 0x34, 0x2b, 0x2e]),
     );
   });
 });

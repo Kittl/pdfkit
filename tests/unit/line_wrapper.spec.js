@@ -83,13 +83,7 @@ describe('LineWrapper', () => {
 
     wrapper.wrap('Hello', {});
 
-    expect(events).toEqual([
-      'sectionStart',
-      'firstLine',
-      'lastLine',
-      'line',
-      'sectionEnd',
-    ]);
+    expect(events).toEqual(['sectionStart', 'firstLine', 'lastLine', 'line', 'sectionEnd']);
   });
 
   test('emits events in order for a single-line text that triggers a page break', () => {
@@ -110,13 +104,7 @@ describe('LineWrapper', () => {
 
     wrapper.wrap('Hello', {});
 
-    expect(events).toEqual([
-      'sectionStart',
-      'firstLine',
-      'lastLine',
-      'line',
-      'sectionEnd',
-    ]);
+    expect(events).toEqual(['sectionStart', 'firstLine', 'lastLine', 'line', 'sectionEnd']);
   });
 
   test('emits nested events when content spans in multiple pages', () => {
@@ -136,10 +124,7 @@ describe('LineWrapper', () => {
     });
     wrapper.on('sectionEnd', () => events.push('sectionEnd'));
 
-    wrapper.wrap(
-      `multiple lines of text that should span across pages`.repeat(4),
-      {},
-    );
+    wrapper.wrap(`multiple lines of text that should span across pages`.repeat(4), {});
 
     expect(events).toEqual([
       'sectionStart',

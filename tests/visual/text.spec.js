@@ -23,10 +23,9 @@ describe('text', function () {
   test('soft hyphen', function () {
     return runDocTest(function (doc) {
       doc.font('tests/fonts/Roboto-Regular.ttf');
-      doc.text(
-        'Text with soft hyphen - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lo ip\u00ADsum',
-        { align: 'justify' },
-      );
+      doc.text('Text with soft hyphen - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lo ip\u00ADsum', {
+        align: 'justify',
+      });
       doc.text(
         'Text with soft hyphen on the edge - ttttestttestttestttestttestttestttestttestttestttestttes\u00ADtt\u00ADt',
         { align: 'justify' },
@@ -68,38 +67,30 @@ describe('text', function () {
   test('list (numbered)', function () {
     return runDocTest(function (doc) {
       doc.font('tests/fonts/Roboto-Regular.ttf');
-      doc
-        .fillColor('#000')
-        .list(['One', 'Two', 'Three'], 100, 150, { listType: 'numbered' });
+      doc.fillColor('#000').list(['One', 'Two', 'Three'], 100, 150, { listType: 'numbered' });
     });
   });
 
   test('list (lettered)', function () {
     return runDocTest(function (doc) {
       doc.font('tests/fonts/Roboto-Regular.ttf');
-      doc
-        .fillColor('#000')
-        .list(['One', 'Two', 'Three'], 100, 150, { listType: 'lettered' });
+      doc.fillColor('#000').list(['One', 'Two', 'Three'], 100, 150, { listType: 'lettered' });
     });
   });
 
   test('list with sub-list (unordered)', function () {
     return runDocTest(function (doc) {
       doc.font('tests/fonts/Roboto-Regular.ttf');
-      doc
-        .fillColor('#000')
-        .list(['One', ['One.One', 'One.Two'], 'Three'], 100, 150);
+      doc.fillColor('#000').list(['One', ['One.One', 'One.Two'], 'Three'], 100, 150);
     });
   });
 
   test('list with sub-list (ordered)', function () {
     return runDocTest(function (doc) {
       doc.font('tests/fonts/Roboto-Regular.ttf');
-      doc
-        .fillColor('#000')
-        .list(['One', ['One.One', 'One.Two'], 'Three'], 100, 150, {
-          listType: 'numbered',
-        });
+      doc.fillColor('#000').list(['One', ['One.One', 'One.Two'], 'Three'], 100, 150, {
+        listType: 'numbered',
+      });
     });
   });
 
@@ -117,16 +108,7 @@ describe('text', function () {
 
   test('rotated text', function () {
     let i = 0;
-    const cols = [
-      '#292f56',
-      '#492d73',
-      '#8c2f94',
-      '#b62d78',
-      '#d82d31',
-      '#e69541',
-      '#ecf157',
-      '#acfa70',
-    ];
+    const cols = ['#292f56', '#492d73', '#8c2f94', '#b62d78', '#d82d31', '#e69541', '#ecf157', '#acfa70'];
 
     function randColor() {
       return cols[i++ % cols.length];
@@ -141,11 +123,7 @@ describe('text', function () {
 
         if (withLabel) {
           const bounds = doc.boundsOfString(text, 200, 200, { rotation: i });
-          doc
-            .save()
-            .rect(bounds.x, bounds.y, bounds.width, bounds.height)
-            .stroke(randColor())
-            .restore();
+          doc.save().rect(bounds.x, bounds.y, bounds.width, bounds.height).stroke(randColor()).restore();
         }
 
         doc

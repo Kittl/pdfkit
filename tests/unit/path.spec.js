@@ -36,9 +36,7 @@ describe('SVG Path', () => {
       // Arc is converted to bezier curves, so we should see 'c' (curveto) commands
       // PDF format: "x1 y1 x2 y2 x3 y3 c"
       expect(content).toContain('2.761424 -2.761424 7.238576 -2.761424 10 0 c');
-      expect(content).toContain(
-        '12.761424 2.761424 12.761424 7.238576 10 10 c',
-      );
+      expect(content).toContain('12.761424 2.761424 12.761424 7.238576 10 10 c');
     });
 
     test('parses arc with chained flags where flags touch x coordinate "a5 5 0 011-5"', () => {

@@ -7,26 +7,19 @@ const buildMessage = (utils, data, chunk, headIndex) => {
     const difference = diff(chunk, received);
     message = `Difference:\n\n${difference}`;
   } else {
-    message =
-      'Expected data to contain chunk:\n' + `  ${utils.printExpected(chunk)}\n`;
+    message = 'Expected data to contain chunk:\n' + `  ${utils.printExpected(chunk)}\n`;
   }
   return message;
 };
 
 const passMessage = (utils, data, chunk, headIndex) => () => {
   return (
-    utils.matcherHint('.not.toContainChunk', 'data', 'chunk') +
-    '\n\n' +
-    buildMessage(utils, data, chunk, headIndex)
+    utils.matcherHint('.not.toContainChunk', 'data', 'chunk') + '\n\n' + buildMessage(utils, data, chunk, headIndex)
   );
 };
 
 const failMessage = (utils, data, chunk, headIndex) => () => {
-  return (
-    utils.matcherHint('.toContainChunk', 'data', 'chunk') +
-    '\n\n' +
-    buildMessage(utils, data, chunk, headIndex)
-  );
+  return utils.matcherHint('.toContainChunk', 'data', 'chunk') + '\n\n' + buildMessage(utils, data, chunk, headIndex);
 };
 
 export default {

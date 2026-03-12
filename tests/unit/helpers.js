@@ -91,10 +91,7 @@ function parseTextStreams(decodedStream) {
     let lastFontName;
     let lastFontSize;
     fontRegex.lastIndex = 0;
-    while (
-      (fMatch = fontRegex.exec(decodedStream)) !== null &&
-      fMatch.index < tjIndex
-    ) {
+    while ((fMatch = fontRegex.exec(decodedStream)) !== null && fMatch.index < tjIndex) {
       lastFontName = fMatch[1];
       lastFontSize = parseFloat(fMatch[2]);
     }
@@ -104,10 +101,7 @@ function parseTextStreams(decodedStream) {
     let tmMatch;
     let lastTm = undefined;
     tmRegex.lastIndex = 0;
-    while (
-      (tmMatch = tmRegex.exec(decodedStream)) !== null &&
-      tmMatch.index < tjIndex
-    ) {
+    while ((tmMatch = tmRegex.exec(decodedStream)) !== null && tmMatch.index < tjIndex) {
       lastTm = tmMatch;
     }
     // Default to origin if no Tm found
@@ -122,10 +116,7 @@ function parseTextStreams(decodedStream) {
     let cmMatch;
     let lastCm = undefined;
     cmRegex.lastIndex = 0;
-    while (
-      (cmMatch = cmRegex.exec(decodedStream)) !== null &&
-      cmMatch.index < tjIndex
-    ) {
+    while ((cmMatch = cmRegex.exec(decodedStream)) !== null && cmMatch.index < tjIndex) {
       lastCm = cmMatch;
     }
     // Apply transform: [a b c d e f] to point (tx, ty)

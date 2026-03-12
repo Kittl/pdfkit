@@ -52,10 +52,7 @@ async function pdf2png(data, { systemFonts } = {}) {
     // Render the page on a Node canvas with 100% scale.
     const viewport = page.getViewport({ scale: 2.0 });
     const canvasFactory = new NodeCanvasFactory();
-    const canvasAndContext = canvasFactory.create(
-      viewport.width,
-      viewport.height,
-    );
+    const canvasAndContext = canvasFactory.create(viewport.width, viewport.height);
     const renderContext = {
       canvasContext: canvasAndContext.context,
       viewport,

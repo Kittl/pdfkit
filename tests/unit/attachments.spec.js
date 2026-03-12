@@ -207,10 +207,7 @@ describe('file', () => {
     });
     document.end();
 
-    const numFiles = docData.filter(
-      (str) =>
-        typeof str === 'string' && str.startsWith('<<\n/Type /EmbeddedFile\n'),
-    );
+    const numFiles = docData.filter((str) => typeof str === 'string' && str.startsWith('<<\n/Type /EmbeddedFile\n'));
 
     expect(numFiles.length).toEqual(1);
 

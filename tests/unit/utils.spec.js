@@ -13,26 +13,11 @@ describe('normalizeSides', () => {
       { top: 1, right: 2, bottom: 3, left: 4 },
       { top: 1, right: 2, bottom: 3, left: 4 },
     ],
-    [
-      { a: 'hi' },
-      { top: undefined, right: undefined, bottom: undefined, left: undefined },
-    ],
-    [
-      { vertical: 'hi' },
-      { top: 'hi', right: undefined, bottom: 'hi', left: undefined },
-    ],
-    [
-      { top: undefined },
-      { top: undefined, right: undefined, bottom: undefined, left: undefined },
-    ],
-    [
-      null,
-      { top: undefined, right: undefined, bottom: undefined, left: undefined },
-    ],
-    [
-      undefined,
-      { top: undefined, right: undefined, bottom: undefined, left: undefined },
-    ],
+    [{ a: 'hi' }, { top: undefined, right: undefined, bottom: undefined, left: undefined }],
+    [{ vertical: 'hi' }, { top: 'hi', right: undefined, bottom: 'hi', left: undefined }],
+    [{ top: undefined }, { top: undefined, right: undefined, bottom: undefined, left: undefined }],
+    [null, { top: undefined, right: undefined, bottom: undefined, left: undefined }],
+    [undefined, { top: undefined, right: undefined, bottom: undefined, left: undefined }],
     [true, { top: true, right: true, bottom: true, left: true }],
     [false, { top: false, right: false, bottom: false, left: false }],
   ])('%s -> %s', (size, expected) => {
@@ -40,13 +25,7 @@ describe('normalizeSides', () => {
   });
 
   test('with transformer', () => {
-    expect(
-      normalizeSides(
-        undefined,
-        { top: '1', right: '2', bottom: '3', left: '4' },
-        Number,
-      ),
-    ).toEqual({
+    expect(normalizeSides(undefined, { top: '1', right: '2', bottom: '3', left: '4' }, Number)).toEqual({
       top: 1,
       right: 2,
       bottom: 3,

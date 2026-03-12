@@ -2,9 +2,7 @@ import PDFSecurity from '../../lib/security';
 
 // Mock document object
 function createMockDocument(id = null) {
-  const mockId =
-    id ||
-    new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
+  const mockId = id || new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
   return {
     _id: mockId,
     ref: (obj) => ({
@@ -82,9 +80,7 @@ describe('PDFSecurity', () => {
   describe('constructor', () => {
     test('throws when no password provided', () => {
       const doc = createMockDocument();
-      expect(() => new PDFSecurity(doc, {})).toThrow(
-        'None of owner password and user password is defined.',
-      );
+      expect(() => new PDFSecurity(doc, {})).toThrow('None of owner password and user password is defined.');
     });
   });
 

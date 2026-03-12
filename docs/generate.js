@@ -244,11 +244,7 @@ class Node {
 
           if (fragment.type === 'text') {
             // add a new page for each heading, unless it follows another heading
-            if (
-              ['h1', 'h2'].includes(this.type) &&
-              lastType != null &&
-              lastType !== 'h1'
-            ) {
+            if (['h1', 'h2'].includes(this.type) && lastType != null && lastType !== 'h1') {
               doc.addPage();
             }
 
@@ -271,10 +267,7 @@ class Node {
 
             doc.text(fragment.text, options);
           } else {
-            fragment.render(
-              doc,
-              index < this.content.length - 1 && this.type !== 'bulletlist',
-            );
+            fragment.render(doc, index < this.content.length - 1 && this.type !== 'bulletlist');
           }
 
           lastType = this.type;

@@ -19,10 +19,7 @@ describe('Document trailer', () => {
   test('', () => {
     const docData = logData(document);
     document.end();
-    expect(docData).toContainChunk([
-      '8 0 obj',
-      '<<\n/Producer 9 0 R\n/Creator 10 0 R\n/CreationDate 11 0 R\n>>',
-    ]);
+    expect(docData).toContainChunk(['8 0 obj', '<<\n/Producer 9 0 R\n/Creator 10 0 R\n/CreationDate 11 0 R\n>>']);
     expect(docData).toContainChunk(['9 0 obj', '(PDFKit)']);
     expect(docData).toContainChunk(['10 0 obj', '(PDFKit)']);
     expect(docData).toContainChunk(['11 0 obj', '(D:20180201000000Z)']);
@@ -35,10 +32,7 @@ describe('Document trailer', () => {
   test('written empty data of destinations', () => {
     const docData = logData(document);
     document.end();
-    expect(docData).toContainChunk([
-      '2 0 obj',
-      '<<\n/Dests <<\n  /Names [\n]\n>>\n>>',
-    ]);
+    expect(docData).toContainChunk(['2 0 obj', '<<\n/Dests <<\n  /Names [\n]\n>>\n>>']);
   });
 
   test('written data of destinations', () => {

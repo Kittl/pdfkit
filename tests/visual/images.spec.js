@@ -170,14 +170,9 @@ describe('images', function () {
       doc.fillOpacity(undefined);
       doc.fontSize(12);
 
-      doc.text(
-        'Images with EXIF orientation should properly align with fit/cover options:',
-        40,
-        10,
-        {
-          lineBreak: false,
-        },
-      );
+      doc.text('Images with EXIF orientation should properly align with fit/cover options:', 40, 10, {
+        lineBreak: false,
+      });
 
       // Orientation 1
       doc.text('1 - No orientation needed', 40, 30, {
@@ -355,14 +350,9 @@ describe('images', function () {
       doc.fillOpacity(undefined);
       doc.fontSize(12);
 
-      doc.text(
-        'Images with EXIF orientation should properly align with fit/cover options:',
-        40,
-        10,
-        {
-          lineBreak: false,
-        },
-      );
+      doc.text('Images with EXIF orientation should properly align with fit/cover options:', 40, 10, {
+        lineBreak: false,
+      });
 
       // Orientation 1
       doc.text('1 - No orientation needed', 40, 30, {
@@ -538,14 +528,9 @@ describe('images', function () {
       doc.fillOpacity(undefined);
       doc.fontSize(12);
 
-      doc.text(
-        'EXIF orientation support can be enabled on the entire PDFDocument:',
-        40,
-        10,
-        {
-          lineBreak: false,
-        },
-      );
+      doc.text('EXIF orientation support can be enabled on the entire PDFDocument:', 40, 10, {
+        lineBreak: false,
+      });
 
       doc.text('1 - No orientation needed', 40, 30, {
         lineBreak: false,

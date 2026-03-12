@@ -11,10 +11,7 @@ describe('PDF/A-2', () => {
     let doc = new PDFDocument(options);
     const data = logData(doc);
     doc.end();
-    expect(data).toContainChunk([
-      `11 0 obj`,
-      `<<\n/length 892\n/Type /Metadata\n/Subtype /XML\n/Length 894\n>>`,
-    ]);
+    expect(data).toContainChunk([`11 0 obj`, `<<\n/length 892\n/Type /Metadata\n/Subtype /XML\n/Length 894\n>>`]);
   });
 
   test('color profile is present', () => {

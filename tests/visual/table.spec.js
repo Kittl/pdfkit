@@ -373,37 +373,31 @@ describe('table', function () {
   });
 
   test('line flowing rotated text', function () {
-    return runDocTest(
-      { layout: 'landscape', margin: 19 },
-      async function (doc) {
-        doc.font('tests/fonts/Roboto-Italic.ttf');
-        doc.table({
-          debug: true,
-          defaultStyle: { align: 'center' },
-          columnStyles: [{ width: 200, textOptions: { rotation: 45 } }],
-          data: [
-            [
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet pulvinar velit, at interdum velit ullamcorper at. Sed a velit vulputate, tristique metus eu, hendrerit nisi. Ut vitae nisl in sapien ultricies commodo et consectetur. nibh. Etiam tempor in orci quis viverra. Ut commodo, purus ac elementum ultricies, diam risus ultricies turpis, ac accumsan orci turpis a libero. Curabitur convallis nisi sed nisi elementum sollicitudin. Aenean eget urna luctus, blandit nulla eget, dapibus neque. Aliquam ut arcu erat.',
-            ],
+    return runDocTest({ layout: 'landscape', margin: 19 }, async function (doc) {
+      doc.font('tests/fonts/Roboto-Italic.ttf');
+      doc.table({
+        debug: true,
+        defaultStyle: { align: 'center' },
+        columnStyles: [{ width: 200, textOptions: { rotation: 45 } }],
+        data: [
+          [
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet pulvinar velit, at interdum velit ullamcorper at. Sed a velit vulputate, tristique metus eu, hendrerit nisi. Ut vitae nisl in sapien ultricies commodo et consectetur. nibh. Etiam tempor in orci quis viverra. Ut commodo, purus ac elementum ultricies, diam risus ultricies turpis, ac accumsan orci turpis a libero. Curabitur convallis nisi sed nisi elementum sollicitudin. Aenean eget urna luctus, blandit nulla eget, dapibus neque. Aliquam ut arcu erat.',
           ],
-        });
-      },
-    );
+        ],
+      });
+    });
   });
 
   test('multi line rotated text', function () {
-    return runDocTest(
-      { layout: 'landscape', margin: 19 },
-      async function (doc) {
-        doc.font('tests/fonts/Roboto-Italic.ttf');
-        doc.table({
-          debug: true,
-          defaultStyle: { align: 'center', width: 200, height: 200 },
-          columnStyles: [{ textOptions: { rotation: 90 } }],
-          data: [['Hello\nWorld']],
-        });
-      },
-    );
+    return runDocTest({ layout: 'landscape', margin: 19 }, async function (doc) {
+      doc.font('tests/fonts/Roboto-Italic.ttf');
+      doc.table({
+        debug: true,
+        defaultStyle: { align: 'center', width: 200, height: 200 },
+        columnStyles: [{ textOptions: { rotation: 90 } }],
+        data: [['Hello\nWorld']],
+      });
+    });
   });
 
   test('multi page table', function () {

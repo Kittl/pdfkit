@@ -80,18 +80,8 @@ f\n`,
 
   test('Pattern naming', () => {
     const docData = logData(document);
-    const pattern1 = document.pattern(
-      [1, 1, 4, 4],
-      3,
-      3,
-      '1 w 0 1 m 4 5 l s 2 0 m 5 3 l s',
-    );
-    const pattern2 = document.pattern(
-      [1, 1, 7, 7],
-      6,
-      6,
-      '1 w 0 1 m 7 8 l s 5 0 m 8 3 l s',
-    );
+    const pattern1 = document.pattern([1, 1, 4, 4], 3, 3, '1 w 0 1 m 4 5 l s 2 0 m 5 3 l s');
+    const pattern2 = document.pattern([1, 1, 7, 7], 6, 6, '1 w 0 1 m 7 8 l s 5 0 m 8 3 l s');
     document.rect(0, 0, 100, 100).fill([pattern1, 'blue']);
     document.rect(0, 0, 100, 100).fill([pattern2, 'red']).end();
 

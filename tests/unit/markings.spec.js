@@ -267,24 +267,14 @@ EMC
       document.markContent('Span');
 
       const section1 = document.struct('Sect', [
-        document.struct('P', [
-          pContent1,
-          document.struct('Link', linkContent),
-          pContent2,
-        ]),
+        document.struct('P', [pContent1, document.struct('Link', linkContent), pContent2]),
       ]);
-      const section2 = document.struct('Sect', [
-        document.struct('P', [pContent3]),
-      ]);
+      const section2 = document.struct('Sect', [document.struct('P', [pContent3])]);
       document.addStructure(section1).addStructure(section2);
 
       document.end();
 
-      expect(docData).toContainChunk([
-        `3 0 obj`,
-        /\/StructTreeRoot 8 0 R/,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`3 0 obj`, /\/StructTreeRoot 8 0 R/, `endobj`]);
       expect(docData).toContainChunk([`3 0 obj`, /\/MarkInfo 9 0 R/, `endobj`]);
       expect(docData).toContainChunk([
         `8 0 obj`,
@@ -300,31 +290,11 @@ EMC
 >>`,
         `endobj`,
       ]);
-      expect(docData).toContainChunk([
-        `12 0 obj`,
-        `<<\n/S /Sect\n/P 8 0 R\n/K [11 0 R]\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `11 0 obj`,
-        `<<\n/S /P\n/P 12 0 R\n/K [0 10 0 R 2]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `10 0 obj`,
-        `<<\n/S /Link\n/P 11 0 R\n/K [1]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `14 0 obj`,
-        `<<\n/S /Sect\n/P 8 0 R\n/K [13 0 R]\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `13 0 obj`,
-        `<<\n/S /P\n/P 14 0 R\n/K [3]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`12 0 obj`, `<<\n/S /Sect\n/P 8 0 R\n/K [11 0 R]\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`11 0 obj`, `<<\n/S /P\n/P 12 0 R\n/K [0 10 0 R 2]\n/Pg 7 0 R\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`10 0 obj`, `<<\n/S /Link\n/P 11 0 R\n/K [1]\n/Pg 7 0 R\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`14 0 obj`, `<<\n/S /Sect\n/P 8 0 R\n/K [13 0 R]\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`13 0 obj`, `<<\n/S /P\n/P 14 0 R\n/K [3]\n/Pg 7 0 R\n>>`, `endobj`]);
       expect(docData).toContainChunk([`9 0 obj`, `<<\n>>`, `endobj`]);
     });
 
@@ -352,11 +322,7 @@ EMC
 
       document.end();
 
-      expect(docData).toContainChunk([
-        `3 0 obj`,
-        /\/StructTreeRoot 8 0 R/,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`3 0 obj`, /\/StructTreeRoot 8 0 R/, `endobj`]);
       expect(docData).toContainChunk([`3 0 obj`, /\/MarkInfo 9 0 R/, `endobj`]);
       expect(docData).toContainChunk([
         `8 0 obj`,
@@ -372,31 +338,11 @@ EMC
 >>`,
         `endobj`,
       ]);
-      expect(docData).toContainChunk([
-        `10 0 obj`,
-        `<<\n/S /Sect\n/P 8 0 R\n/K [13 0 R]\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `13 0 obj`,
-        `<<\n/S /P\n/P 10 0 R\n/K [0 12 0 R 2]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `12 0 obj`,
-        `<<\n/S /Link\n/P 13 0 R\n/K [1]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `11 0 obj`,
-        `<<\n/S /Sect\n/P 8 0 R\n/K [14 0 R]\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `14 0 obj`,
-        `<<\n/S /P\n/P 11 0 R\n/K [3]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`10 0 obj`, `<<\n/S /Sect\n/P 8 0 R\n/K [13 0 R]\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`13 0 obj`, `<<\n/S /P\n/P 10 0 R\n/K [0 12 0 R 2]\n/Pg 7 0 R\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`12 0 obj`, `<<\n/S /Link\n/P 13 0 R\n/K [1]\n/Pg 7 0 R\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`11 0 obj`, `<<\n/S /Sect\n/P 8 0 R\n/K [14 0 R]\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`14 0 obj`, `<<\n/S /P\n/P 11 0 R\n/K [3]\n/Pg 7 0 R\n>>`, `endobj`]);
       expect(docData).toContainChunk([`9 0 obj`, `<<\n>>`, `endobj`]);
     });
 
@@ -419,16 +365,8 @@ EMC
 
       document.end();
 
-      expect(docData).toContainChunk([
-        `3 0 obj`,
-        /\/StructTreeRoot 9 0 R/,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `3 0 obj`,
-        /\/MarkInfo 13 0 R/,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`3 0 obj`, /\/StructTreeRoot 9 0 R/, `endobj`]);
+      expect(docData).toContainChunk([`3 0 obj`, /\/MarkInfo 13 0 R/, `endobj`]);
       expect(docData).toContainChunk([
         `9 0 obj`,
         `<<
@@ -443,31 +381,11 @@ EMC
 >>`,
         `endobj`,
       ]);
-      expect(docData).toContainChunk([
-        `8 0 obj`,
-        `<<\n/S /Sect\n/P 9 0 R\n/K [12 0 R]\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `12 0 obj`,
-        `<<\n/S /P\n/P 8 0 R\n/K [0 11 0 R 2]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `11 0 obj`,
-        `<<\n/S /Link\n/P 12 0 R\n/K [1]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `10 0 obj`,
-        `<<\n/S /Sect\n/P 9 0 R\n/K [14 0 R]\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `14 0 obj`,
-        `<<\n/S /P\n/P 10 0 R\n/K [3]\n/Pg 7 0 R\n>>`,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`8 0 obj`, `<<\n/S /Sect\n/P 9 0 R\n/K [12 0 R]\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`12 0 obj`, `<<\n/S /P\n/P 8 0 R\n/K [0 11 0 R 2]\n/Pg 7 0 R\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`11 0 obj`, `<<\n/S /Link\n/P 12 0 R\n/K [1]\n/Pg 7 0 R\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`10 0 obj`, `<<\n/S /Sect\n/P 9 0 R\n/K [14 0 R]\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`14 0 obj`, `<<\n/S /P\n/P 10 0 R\n/K [3]\n/Pg 7 0 R\n>>`, `endobj`]);
       expect(docData).toContainChunk([`13 0 obj`, `<<\n>>`, `endobj`]);
     });
 
@@ -564,22 +482,10 @@ EMC
 
       expect(docData).toContainChunk([`3 0 obj`, /\/Lang \(en-AU\)/, `endobj`]);
       expect(docData).toContainChunk([`3 0 obj`, /\/MarkInfo 5 0 R/, `endobj`]);
-      expect(docData).toContainChunk([
-        `5 0 obj`,
-        `<<\n/Marked true\n>>`,
-        `endobj`,
-      ]);
-      expect(docData).toContainChunk([
-        `3 0 obj`,
-        /\/ViewerPreferences 7 0 R/,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`5 0 obj`, `<<\n/Marked true\n>>`, `endobj`]);
+      expect(docData).toContainChunk([`3 0 obj`, /\/ViewerPreferences 7 0 R/, `endobj`]);
 
-      expect(docData).toContainChunk([
-        `3 0 obj`,
-        /\/StructTreeRoot 6 0 R/,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`3 0 obj`, /\/StructTreeRoot 6 0 R/, `endobj`]);
 
       expect(docData).toContainChunk([
         `6 0 obj`,
@@ -594,11 +500,7 @@ EMC
         `endobj`,
       ]);
 
-      expect(docData).toContainChunk([
-        `7 0 obj`,
-        /\/DisplayDocTitle true/,
-        `endobj`,
-      ]);
+      expect(docData).toContainChunk([`7 0 obj`, /\/DisplayDocTitle true/, `endobj`]);
       expect(docData).toContainChunk([`trailer`, /\/Info 11 0 R/, `startxref`]);
       expect(docData).toContainChunk([`11 0 obj`, /\/Title 15 0 R/, `endobj`]);
       expect(docData).toContainChunk([`15 0 obj`, `(My Title)`, `endobj`]);
@@ -625,11 +527,7 @@ EMC
       document.end();
 
       expect(docData).toContainChunk([`3 0 obj`, /\/Lang \(en-AU\)/, `endobj`]);
-      expect(docData).not.toContainChunk([
-        `3 0 obj`,
-        /\/MarkInfo 5 0 R/,
-        `endobj`,
-      ]);
+      expect(docData).not.toContainChunk([`3 0 obj`, /\/MarkInfo 5 0 R/, `endobj`]);
       expect(docData).not.toContainChunk([`10 0 obj`, /\/Tabs \/S/, `endobj`]);
     });
   });
@@ -683,21 +581,9 @@ EMC
         `\nendstream`,
         `endobj`,
       ]);
-      expect(docData).toContainChunk([
-        '11 0 obj',
-        '<<\n/S /P\n/P 8 0 R\n/K [0]\n/Pg 7 0 R\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '13 0 obj',
-        '<<\n/S /P\n/P 8 0 R\n/K [1]\n/Pg 7 0 R\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '8 0 obj',
-        '<<\n/S /Sect\n/P 9 0 R\n/K [11 0 R 13 0 R]\n>>',
-        'endobj',
-      ]);
+      expect(docData).toContainChunk(['11 0 obj', '<<\n/S /P\n/P 8 0 R\n/K [0]\n/Pg 7 0 R\n>>', 'endobj']);
+      expect(docData).toContainChunk(['13 0 obj', '<<\n/S /P\n/P 8 0 R\n/K [1]\n/Pg 7 0 R\n>>', 'endobj']);
+      expect(docData).toContainChunk(['8 0 obj', '<<\n/S /Sect\n/P 9 0 R\n/K [11 0 R 13 0 R]\n>>', 'endobj']);
     });
 
     test('adds list items to structure', () => {
@@ -770,41 +656,13 @@ EMC
         `\nendstream`,
         `endobj`,
       ]);
-      expect(docData).toContainChunk([
-        '12 0 obj',
-        '<<\n/S /Lbl\n/P 10 0 R\n/K [0]\n/Pg 7 0 R\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '13 0 obj',
-        '<<\n/S /LBody\n/P 10 0 R\n/K [1]\n/Pg 7 0 R\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '16 0 obj',
-        '<<\n/S /Lbl\n/P 15 0 R\n/K [2]\n/Pg 7 0 R\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '17 0 obj',
-        '<<\n/S /LBody\n/P 15 0 R\n/K [3]\n/Pg 7 0 R\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '10 0 obj',
-        '<<\n/S /LI\n/P 8 0 R\n/K [12 0 R 13 0 R]\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '15 0 obj',
-        '<<\n/S /LI\n/P 8 0 R\n/K [16 0 R 17 0 R]\n>>',
-        'endobj',
-      ]);
-      expect(docData).toContainChunk([
-        '8 0 obj',
-        '<<\n/S /List\n/P 9 0 R\n/K [10 0 R 15 0 R]\n>>',
-        'endobj',
-      ]);
+      expect(docData).toContainChunk(['12 0 obj', '<<\n/S /Lbl\n/P 10 0 R\n/K [0]\n/Pg 7 0 R\n>>', 'endobj']);
+      expect(docData).toContainChunk(['13 0 obj', '<<\n/S /LBody\n/P 10 0 R\n/K [1]\n/Pg 7 0 R\n>>', 'endobj']);
+      expect(docData).toContainChunk(['16 0 obj', '<<\n/S /Lbl\n/P 15 0 R\n/K [2]\n/Pg 7 0 R\n>>', 'endobj']);
+      expect(docData).toContainChunk(['17 0 obj', '<<\n/S /LBody\n/P 15 0 R\n/K [3]\n/Pg 7 0 R\n>>', 'endobj']);
+      expect(docData).toContainChunk(['10 0 obj', '<<\n/S /LI\n/P 8 0 R\n/K [12 0 R 13 0 R]\n>>', 'endobj']);
+      expect(docData).toContainChunk(['15 0 obj', '<<\n/S /LI\n/P 8 0 R\n/K [16 0 R 17 0 R]\n>>', 'endobj']);
+      expect(docData).toContainChunk(['8 0 obj', '<<\n/S /List\n/P 9 0 R\n/K [10 0 R 15 0 R]\n>>', 'endobj']);
     });
   });
 });

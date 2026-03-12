@@ -76,9 +76,7 @@ describe('PNGImage', () => {
     // Filter = 0
     // Interlace = 0
 
-    const img = createImage(
-      './tests/images/pngsuite-rgb-transparent-white.png',
-    );
+    const img = createImage('./tests/images/pngsuite-rgb-transparent-white.png');
 
     expect(img.finalize).toBeCalledTimes(1);
 
@@ -221,9 +219,7 @@ describe('PNGImage', () => {
     // Filter = 0
     // Interlace = 0
 
-    const img = createImage(
-      './tests/images/pngsuite-palette-transparent-white.png',
-    );
+    const img = createImage('./tests/images/pngsuite-palette-transparent-white.png');
 
     expect(img.finalize).toBeCalledTimes(1);
 
@@ -269,9 +265,7 @@ describe('PNGImage', () => {
     // Filter = 0
     // Interlace = 0
 
-    const img = createImage(
-      './tests/images/pallete-transparent-white-1bit.png',
-    );
+    const img = createImage('./tests/images/pallete-transparent-white-1bit.png');
 
     expect(img.finalize).toBeCalledTimes(1);
 
@@ -343,9 +337,7 @@ describe('PNGImage', () => {
     // Filter = 0
     // Interlace = 0
 
-    const img = createImage(
-      './tests/images/pngsuite-gray-transparent-black.png',
-    );
+    const img = createImage('./tests/images/pngsuite-gray-transparent-black.png');
 
     expect(img.finalize).toBeCalledTimes(1);
 
@@ -379,9 +371,7 @@ describe('PNGImage', () => {
     // Filter = 0
     // Interlace = 0
 
-    const img = createImage(
-      './tests/images/pngsuite-gray-transparent-white.png',
-    );
+    const img = createImage('./tests/images/pngsuite-gray-transparent-white.png');
 
     expect(img.finalize).toBeCalledTimes(1);
 
