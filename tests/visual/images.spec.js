@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { runDocTest } from './helpers';
 
 describe('images', function () {
@@ -667,6 +668,23 @@ describe('images', function () {
         height: 80,
         ignoreOrientation: false,
       });
+    });
+  });
+
+  test('bitmap with icc profile', () => {
+    return runDocTest({}, function (doc) {
+      const data = new Uint8Array(fs.readFileSync('./tests/images/image.raw'));
+      const profileData = fs.readFileSync('tests/profiles/eciCMYK_v2.icc');
+      doc.iccProfile('KittlCMYK', profileData, 4, 'DeviceCMYK');
+      const image = doc.openImage(data, {
+        isBitmap: true,
+        width: 651,
+        height: 643,
+        channels: 5,
+        hasAlphaChannel: true,
+        colorSpace: 'KittlCMYK',
+      });
+      doc.image(image, 0, 0);
     });
   });
 });
