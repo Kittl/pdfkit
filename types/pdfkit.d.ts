@@ -40,6 +40,7 @@ shader(fn: () => any): any;
       data: Uint8Array | Buffer;
       channels: number;
       alternate: string | string[];
+      type?: 'cmyk' | 'rgb'
     }
 }
 
@@ -786,7 +787,7 @@ declare namespace PDFKit.Mixins {
     }
 
     interface PDFColorSpace {
-      iccProfile(label:string, data: Uint8Array | ArrayBuffer, channels: number, alternate: string|string[]): this;
+      iccProfile(label:string, data: Uint8Array | ArrayBuffer, channels: number, alternate: string|string[], type?: 'rgb'|'cmyk'): this;
     }
 
     interface PDFOutputIntent {
