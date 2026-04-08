@@ -52,9 +52,9 @@ export declare namespace SVGtoPDF {
 
     /** function called to get color, making mapping to CMYK possible */
     colorCallback?: (
-      color: RGBColor | CMYKColor,
+      color?: RGBColor | CMYKColor,
       raw: string,
-    ) => RGBColor | CMYKColor;
+    ) => RGBColor | CMYKColor | undefined;
 
     /** function called when there is a warning */
     warningCallback?: (warning: string, error?: unknown) => void;
